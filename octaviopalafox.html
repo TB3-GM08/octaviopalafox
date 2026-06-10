@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Octavio Palafox | Portafolio Profesional</title>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Variables de color */
+      :root {
+        --primary-color: #1e293b; /* Azul oscuro elegante */
+        --accent-color: #0d9488; /* Verde azulado moderno */
+        --bg-color: #f8fafc;
+        --text-color: #334155;
+        --white: #ffffff;
+      }
+
+      /* Estilos Generales */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* Navegación */
+      nav {
+        background-color: var(--primary-color);
+        color: var(--white);
+        padding: 1rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      nav .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--accent-color);
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+
+      nav ul li a {
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      nav ul li a:hover {
+        color: var(--accent-color);
+      }
+
+      /* Sección Hero */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          #334155 100%
+        );
+        color: var(--white);
+        text-align: center;
+        padding: 100px 20px;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 10px;
+      }
+
+      .hero h2 {
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: var(--accent-color);
+        margin-bottom: 20px;
+      }
+
+      .hero p {
+        max-width: 700px;
+        margin: 0 auto 30px auto;
+        font-size: 1.1rem;
+        color: #cbd5e1;
+      }
+
+      .btn {
+        display: inline-block;
+        background: linear-gradient(135deg, #0d9488 0%, #2dd4bf 100%);
+        color: var(--white);
+        padding: 14px 38px;
+        border-radius: 50px;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        letter-spacing: 1.5px;
+        box-shadow: 0 4px 15px rgba(13, 148, 136, 0.3);
+
+        /* Transición matemática perfecta y linealmente suave */
+        transition:
+          transform 0.3s ease-in-out,
+          box-shadow 0.3s ease-in-out,
+          background 0.3s ease-in-out;
+
+        position: relative;
+        overflow: hidden; /* Crucial para el destello interno */
+        z-index: 1;
+      }
+
+      /* El destello "Smooth" */
+      .btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.25),
+          transparent
+        );
+        transition: left 0.6s ease-in-out;
+        z-index: -1;
+      }
+
+      /* Animación al pasar el cursor */
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(45, 212, 191, 0.5);
+      }
+
+      /* Activa el viaje del destello suavemente */
+      .btn:hover::before {
+        left: 100%;
+      }
+
+      /* Efecto al hacer clic */
+      .btn:active {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(13, 148, 136, 0.4);
+      }
+
+      /* Secciones comunes */
+      section {
+        padding: 80px 5%;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 50px;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        width: 60px;
+        height: 4px;
+        background-color: var(--accent-color);
+        display: block;
+        margin: 10px auto 0;
+        border-radius: 2px;
+      }
+
+      /* Tarjetas de Habilidades (Qué ofrezco) */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .skill-card {
+        background-color: var(--white);
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s;
+        border-top: 4px solid var(--accent-color);
+      }
+
+      .skill-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .skill-card h3 {
+        color: var(--primary-color);
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+      }
+
+      /* Línea de tiempo (Experiencia) */
+      .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .timeline-item {
+        padding: 20px;
+        background: var(--white);
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        border-left: 5px solid var(--primary-color);
+      }
+
+      .timeline-item h3 {
+        color: var(--primary-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .timeline-item .date {
+        font-size: 0.9rem;
+        color: var(--accent-color);
+        font-weight: bold;
+      }
+
+      .timeline-item h4 {
+        color: #64748b;
+        font-size: 1rem;
+        margin-bottom: 10px;
+      }
+
+      /* Footer y Contacto */
+      footer {
+        background-color: var(--primary-color);
+        color: var(--white);
+        text-align: center;
+        padding: 50px 20px;
+      }
+
+      .contact-info {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+      }
+
+      .contact-info a {
+        color: var(--accent-color);
+        font-weight: bold;
+      }
+
+      /* Responsividad */
+      @media (max-width: 768px) {
+        nav {
+          flex-direction: column;
+          gap: 15px;
+        }
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+        .timeline-item h3 {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">Octavio Palafox</div>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#sobre-mi">Perfil</a></li>
+        <li><a href="#experiencia">Experiencia</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <header id="inicio" class="hero">
+      <h1>Octavio Alberto Palafox Valdez</h1>
+      <h2>Ingeniero en Sistemas Computacionales</h2>
+      <p>
+        Transformando la visión técnica en resultados de negocio. Especialista
+        en Gestión Ágil de Proyectos, Desarrollo Front-end y Estrategias
+        Digitales (SEO/SEM).
+      </p>
+      <a href="#contacto" class="btn">Trabajemos Juntos</a>
+    </header>
+
+    <section id="sobre-mi">
+      <h2 class="section-title">Qué Ofrezco</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Gestión de Proyectos y Agilidad</h3>
+          <p>
+            Experiencia comprobada como Scrum Master y Project Manager. Facilito
+            la comunicación en equipos multidisciplinarios, optimizando tiempos
+            de entrega y garantizando el éxito mediante metodologías ágiles.
+          </p>
+        </div>
+        <div class="skill-card">
+          <h3>Desarrollo y Arquitectura Web</h3>
+          <p>
+            Más de 6 años en diseño responsivo y desarrollo Front-end (HTML,
+            CSS, JS, Bootstrap, AngularJs, NodeJs, Git), con conocimientos en
+            desarrollo móvil (Android Studio).
+          </p>
+        </div>
+        <div class="skill-card">
+          <h3>Marketing Digital Estratégico</h3>
+          <p>
+            Coordinación y ejecución de estrategias SEO & SEM para mejorar el
+            alcance, la visibilidad y el impacto de los productos digitales en
+            el mercado competitivo.
+          </p>
+        </div>
+        <div class="skill-card">
+          <h3>Infraestructura y Telecom</h3>
+          <p>
+            Experiencia técnica en integración de sistemas (WCDMA, LTE) y
+            monitoreo de redes, lo que me otorga un profundo entendimiento a
+            nivel de hardware y conectividad.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experiencia" style="background-color: #f1f5f9">
+      <h2 class="section-title">Mi Trayectoria</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>
+            Project Manager y Coord. SEO & SEM
+            <span class="date">Ago 2023 - Actualidad</span>
+          </h3>
+          <h4>Grupo Helvex</h4>
+          <p>
+            Gestión de proyectos y ejecución de estrategias de marketing digital
+            para mejorar la visibilidad de los productos digitales.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>Scrum Master <span class="date">Mar 2022 - Jun 2024</span></h3>
+          <h4>Adlitek</h4>
+          <p>
+            Gestión de proyectos con metodología SCRUM, liderazgo de equipos y
+            optimización del ciclo de vida del software.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>
+            Desarrollo Front-end <span class="date">Sep 2017 - Mar 2022</span>
+          </h3>
+          <h4>TERAN\TBWA</h4>
+          <p>
+            Desarrollo, maquetación y soluciones web responsivas para clientes
+            de agencia de publicidad de alto nivel.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>
+            Desarrollo Front-end <span class="date">Dic 2016 - Abr 2017</span>
+          </h3>
+          <h4>Anzen Digital</h4>
+          <p>
+            Investigación de nuevas tecnologías (NodeJs, AngularJs, Gulp) y
+            desarrollo responsivo con control de versiones en Git.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>
+            Diseño Web Responsivo <span class="date">Ene 2015 - Dic 2016</span>
+          </h3>
+          <h4>Malnor Sistemas</h4>
+          <p>
+            Creación de la plataforma timeweb.mx (Bootstrap, HTML, CSS, Js) y
+            desarrollo de la app móvil TimeWeb en Android Studio.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>
+            Ingeniero de Integración y Pruebas
+            <span class="date">Ene 2013 - Dic 2014</span>
+          </h3>
+          <h4>Ericsson</h4>
+          <p>
+            Área de Integración para mercados de EE.UU. en tecnologías WCDMA y
+            LTE. Auditorías, troubleshooting y uso de CMD.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contacto">
+      <h2>¿Listo para innovar juntos?</h2>
+      <p
+        style="
+          margin: 20px 0;
+          color: #cbd5e1;
+          max-width: 600px;
+          margin-left: auto;
+          margin-right: auto;
+        "
+      >
+        Busco sumarme a una empresa donde pueda aplicar mis conocimientos
+        técnicos, mis habilidades de liderazgo ágil y mi visión estratégica para
+        contribuir directamente al crecimiento de la organización.
+      </p>
+      <div class="contact-info">
+        <span>📱 5548020796</span>
+        <span
+          >✉️
+          <a href="mailto:taytb3gm08@gmail.com">taytb3gm08@gmail.com</a></span
+        >
+        <span>💼 <a href="#" target="_blank">LinkedIn</a></span>
+      </div>
+      <p style="margin-top: 30px; font-size: 0.9rem; color: #94a3b8">
+        &copy; 2026 Octavio Palafox. Todos los derechos reservados.
+      </p>
+    </footer>
+
+    <script>
+      document.querySelectorAll("nav a").forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const section = document.querySelector(this.getAttribute("href"));
+          section.scrollIntoView({ behavior: "smooth" });
+        });
+      });
+    </script>
+  </body>
+</html>
